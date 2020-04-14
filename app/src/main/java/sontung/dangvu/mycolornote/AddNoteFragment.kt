@@ -1,10 +1,13 @@
 package sontung.dangvu.mycolornote
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import android.widget.EditText
+import android.widget.PopupMenu
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.addTextChangedListener
@@ -28,6 +31,8 @@ class AddNoteFragment : Fragment() {
     private lateinit var noteContentEditText: EditText
     private lateinit var currentNote: Note
 
+    private lateinit var imm: InputMethodManager
+
     private val args: AddNoteFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -37,6 +42,10 @@ class AddNoteFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_second, container, false)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -62,10 +71,15 @@ class AddNoteFragment : Fragment() {
                     R.id.action_save -> {
                         currentNote.noteContent = noteContentEditText.text.toString()
                         createOrUpdateNote(currentNote)
+                        imm.hideSoftInputFromWindow(noteContentEditText.windowToken, 0)
                     }
 
                     R.id.action_delete -> {
                         updateNoteDB(ACTION_DELETE, currentNote)
+                    }
+
+                    R.id.action_changeTheme -> {
+                        showColorDialog(view);
                     }
 
                     else -> return@setOnMenuItemClickListener false
@@ -75,6 +89,10 @@ class AddNoteFragment : Fragment() {
             }
         }
 
+    }
+
+    private fun showColorDialog(view: View) {
+        //TODO : ADD SHOW COLOR DIALOG
     }
 
     private fun setMainText(){

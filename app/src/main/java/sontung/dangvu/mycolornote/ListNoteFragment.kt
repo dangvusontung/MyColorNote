@@ -14,6 +14,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -23,6 +24,8 @@ import sontung.dangvu.mycolornote.data.db.model.Note
 import sontung.dangvu.mycolornote.data.viewmodel.NoteViewModel
 import sontung.dangvu.mycolornote.ui.adapter.NoteAdapter
 import sontung.dangvu.mycolornote.ui.listener.OnNoteClickListener
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -41,7 +44,8 @@ class ListNoteFragment : Fragment(), OnNoteClickListener {
         noteAdapter = NoteAdapter(ArrayList(), this)
         noteRecyclerView = view.findViewById(R.id.noteRecyclerView)
         noteRecyclerView.apply {
-            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+//            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            layoutManager = GridLayoutManager(activity, 3)
             adapter = noteAdapter
         }
 
@@ -71,4 +75,5 @@ class ListNoteFragment : Fragment(), OnNoteClickListener {
         val action = ListNoteFragmentDirections.createNote(note)
         Navigation.findNavController(requireView()).navigate(action)
     }
+
 }
