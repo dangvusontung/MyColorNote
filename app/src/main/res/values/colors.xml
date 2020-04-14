@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#beebe9</color>
+    <color name="colorPrimaryDark">#8ac6d1</color>
+    <color name="colorAccent">#ffe3ed</color>
+    <color name="colorAlmostWhite">#fffdf9</color>
+
+    <color name="colorPastelGreen">#9cf196</color>
+    <color name="colorPastelRed">#eb4559</color>
+    <color name="colorPastelYellow">#ffd31d</color>
+    <color name="colorPastelBlue">#5DB1D1</color>
+    <color name="colorPastelPurple">#C7CEEA</color>
+
+    <color name="HoneyDew">#F3FAF1</color>
+</resources>

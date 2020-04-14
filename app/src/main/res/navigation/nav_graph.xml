@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listNoteFragment">
+    <fragment
+        android:id="@+id/listNoteFragment"
+        android:name="sontung.dangvu.mycolornote.ListNoteFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first" >
+        <action
+            android:id="@+id/createNote"
+            app:destination="@id/addNoteFragment"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="sontung.dangvu.mycolornote.AddNoteFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_second" >
+        <action
+            android:id="@+id/backToList"
+            app:destination="@id/listNoteFragment" />
+        <argument
+            android:name="note"
+            app:argType="sontung.dangvu.mycolornote.data.db.model.Note"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+</navigation>
